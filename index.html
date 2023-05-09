@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FeaturedItems</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="featured__items center">
+        <!-- <img src="img/img1.svg" alt="photo1" class="featured__items__photo">
+        <h3 class="featured__items__head">ELLERY X M'O CAPSULE</h3>
+        <p class="featured__items__text">Known for her sculptural takes on traditional tailoring, Australian arbiter of
+            cool Kym Ellery teams up with Moda Operandi.</p>
+        <a href="#" class="featured__items__price">$ 52.00</a> -->
+
+    </div>
+
+
+    <script src="data.js"></script>
+    <script>
+        const data = JSON.parse(dataInfo);
+        const featured__items = document.querySelector('.featured__items');
+
+        console.log(data);
+        data.forEach(element => {
+            const featured__items__product = document.createElement('div');
+            featured__items__product.classList.add('featured__items__product');
+            featured__items__product.id = element.id;
+
+            const featured__items__link = document.createElement('a');
+            featured__items__link.href = '#';
+            const featured__items__photo = document.createElement('img');
+            featured__items__photo.classList.add('featured__items__photo');
+            featured__items__photo.src = element.image;
+            featured__items__photo.alt = element.image.substring(4, 8);
+            featured__items__link.appendChild(featured__items__photo);
+            featured__items__product.appendChild(featured__items__link);
+
+
+            const featured__items__head = document.createElement('h3');
+            featured__items__head.textContent = element.head;
+            featured__items__head.classList.add('featured__items__head');
+            featured__items__product.appendChild(featured__items__head);
+
+            const featured__items__text = document.createElement('p');
+            featured__items__text.textContent = element.text;
+            featured__items__text.classList.add('featured__items__text');
+            featured__items__product.appendChild(featured__items__text);
+
+            const featured__items__price = document.createElement('a');
+            featured__items__price.href = '#';
+            featured__items__price.textContent = `$ ${element.price}`;
+            featured__items__price.classList.add('featured__items__price');
+            featured__items__product.appendChild(featured__items__price);
+
+            featured__items.appendChild(featured__items__product);
+        });
+    </script>
+</body>
+
+</html>
